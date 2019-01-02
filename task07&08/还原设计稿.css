@@ -1,0 +1,123 @@
+
+*{
+    box-sizing: border-box;
+}
+.wrapper{
+    max-width: 960px;
+    margin: 0 auto;
+}
+.clearfix:after {
+    content: '.';
+    height: 0;
+    display: block;
+    clear: both;
+}
+/*header的样式*/
+header {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    overflow: auto;
+    padding: 5px 0;
+    background-color: #575757;
+}
+.header-menu {
+    float: right;
+    color: #ffffff;
+}
+.header-menu ,
+.header-menu li {
+    display: inline-block;
+}
+.header-menu li {
+    margin-right: 5px;
+}
+.header-menu li a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+/*banner的样式*/
+.banner {
+    position: relative;
+    margin-top: 61.2px;
+    height: 300px;
+    background-color: #fdb7ca;
+}
+.banner-wrapper {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    bottom: 5px;
+}
+.banner-menu {
+    float: right;
+}
+.banner-menu li{
+    display: inline-block;
+    border: 1px solid #090909;
+    padding: 4px 4px;
+    background-color: #ffe6e6;
+    transition: padding 0.5s;
+}
+.banner-menu li:hover{
+    padding-top: 15px;
+}
+/*nav的样式*/
+nav {
+    padding-top: 15px;
+    border-bottom: 1.5px solid #d8d8d8;
+}
+.nav-menu li{
+    float: left;
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid #d8d8d8;
+    border-bottom: none;
+    border-radius: 25% 25% 0 0;
+    background-color: #efefef;
+}
+.nav-menu .select {
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+}
+/*
+.nav-menu .select {
+    position: relative;
+    background-color: #fff;
+}
+.select::after{
+    position: absolute;
+    height: 3px;
+    bottom: -2px;
+    right: 0;
+    left: 0;
+    content: '';
+    background-color: #fff;
+}
+*/
+/*main的样式*/
+main .wrapper {
+    padding: 10px 20px;
+}
+main .row {
+    display: flex;
+}
+.row-item {
+    flex: 1;
+    height: 175px;
+    margin :10px 10px;
+    border: 1px solid #d8d8d8;
+}
+.row-item:last-child {
+    margin-right: 0px;
+}
+/*footer的样式*/
+footer {
+    height: 100px;
+    background-color: #575757;
+}
+footer .wrapper{
+    text-align: center;
+    color: #ffffff;
+}
