@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task01</title>
+</head>
+<body>
+    <input id="name" type="text">    
+    <button id="submit-btn">Submit</button>
+    <script>
+        var ipt = document.getElementById('name'),
+            btn = document.getElementById('submit-btn');
+        btn.onclick = function(){
+            console.log(ipt.value);
+        }
+        ipt.onkeyup = function(){
+            if(event.keyCode == 13){
+                console.log(ipt.value);
+            }else if(event.keyCode == 27){
+                ipt.value = '';
+            }
+        }
+    </script>
+</body>
+</html>

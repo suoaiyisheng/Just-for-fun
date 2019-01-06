@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时间</title>
+</head>
+<body>
+    <script>
+        function init(){
+            var current = new Date(),
+                hour = current.getHours()
+            if(hour<=11){
+                alert('早上好呀朋友');
+            }else{
+                alert('你已经错过早上了兄弟');
+            }
+        }//swtich case最好拿来做内容匹配
+        init();
+    </script>
+</body>
+</html>

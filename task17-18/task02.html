@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="dec-bit" type="number" placeholder="输入您需要的数字精度">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+    var ipt1 = document.getElementById('dec-number');
+        ipt2 = document.getElementById('dec-bit');
+        btn = document.getElementById('trans-btn'),
+        result = document.getElementById('result');
+    /*function dec2bin(decNumber) {
+        // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+        try {
+            var a,b,//a用来存商，b用来存余数。
+                stack = new Array();
+            if(decNumber < 0) throw '请输入一个非负整数';
+            do{
+                a = parseInt(decNumber / 2);
+                b = decNumber % 2;
+                stack.push(b);
+                decNumber = a;
+            }while(a);
+            return stack;
+        } catch (error) {
+            result.innerText = '大王不好啦！出错啦！错误他说：'+error ;
+        }
+    }*/
+    function dec2bin(decNumber,binBit) {
+        // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+        try {
+            var a,b,//a用来存商，b用来存余数。
+                stack = new Array();
+            if(decNumber < 0) throw '请输入一个非负整数';
+            do{
+                a = parseInt(decNumber / 2);
+                b = decNumber % 2;
+                stack.push(b);
+                decNumber = a;
+            }while(a);
+            if(stack.length<binBit){
+                for(var count = stack.length;count < binBit;count++){
+                    stack.push(0);
+                }
+            }else if(stack.length>binBit){
+                console.log('精度过小');
+            }
+            return stack;
+        } catch (error) {
+            result.innerText = '大王不好啦！出错啦！错误他说：'+error ;
+        }
+    }
+    btn.onclick = function(){
+            var stack = dec2bin(parseInt(ipt1.value),parseInt(ipt2.value)),
+                text = '',pa
+                len = stack.length;
+            for(var i=0;i<len;i++){
+                text+=stack.pop();
+            }
+            result.innerText = text;
+    }
+    // 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+    // Some coding
+    </script>
+</body>
+</html>

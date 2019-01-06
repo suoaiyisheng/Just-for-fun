@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>爱凤被献花的次数</title>
+    <style>
+        .flower{
+            cursor: url(https://ojlty2hua.qnssl.com/image-1546746918805-5bCP5ZCDICgxKS5wbmc=.png?imageView2/0/q/75|imageslim),default;
+        }
+    </style>
+</head>
+<body class="flower">
+    <div>
+        <img src="我的简历.jpg" alt="爱凤啊">
+    </div>
+    <p>点击图片给爱凤喂烤肠</p>
+    <p>你为爱凤喂烤肠的次数为<span class="times">0</span></p>
+    <script>
+        var times = document.getElementsByClassName('times')[0],
+            ifeng = document.getElementsByTagName('img')[0];
+        ifeng.onclick = function(){
+            var count = parseInt(times.innerText);
+            count++;
+            times.innerText = count;
+        }
+ 1   </script>
+</body>
+</html>

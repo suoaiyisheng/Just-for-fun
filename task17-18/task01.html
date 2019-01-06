@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="first-number"  placeholder="第一个数字">
+    <input id="second-number"  placeholder="第二个数字">
+    <button id="add-btn" data-op='+'>加</button>
+    <button id="minus-btn"  data-op='-'>减</button>
+    <button id="times-btn" data-op='*'>乘</button>
+    <button id="divide-btn" data-op='/'>除</button>
+    <p id="result">运算结果</p>
+    <script>
+        var operator1 = document.getElementById('first-number'),
+            operator2 = document.getElementById('second-number'),
+            btns = document.getElementsByTagName('button'),
+            showResult = document.getElementById('result');
+        var calc = function (operator1,operator2,op){
+                    var result = 0;
+                    switch(op){
+                        case '+':
+                        result = operator1 + operator2;
+                        break;
+                        case '-':
+                        result = operator1 - operator2;
+                        break;
+                        case '*':
+                        result = operator1 * operator2;
+                        break;
+                        case '/':
+                        result = operator1 / operator2;
+                        break;
+                    }
+                    return result;
+                }
+        var init = function(){
+            for(var i =0;i<btns.length;i++){
+                btns[i].onclick=function(){
+                        try {
+                            var num1 = operator1.value,
+                                num2 = operator2.value,
+                                op = this.getAttribute('data-op'),
+                                result;//声明之后会发生什么？
+                            if(isNaN(parseFloat(num1))) throw "第一个操作数出错";
+                            if(isNaN(parseFloat(num2))) throw "第二个操作数出错";
+                            if(num2 == 0) throw "除数不能为0";
+                            result = calc(num1,num2,op);
+                            showResult.innerText = result;
+                        } catch (error) {
+                            showResult.innerText = '大王不好啦！出错啦！错误他说：'+error ;
+                        }
+                }
+            }
+        }
+        //①catch会创建自己的块作用域；
+        //number(),parseFloat(),parseInt()转换规则是什么？有什么差别？
+        init();
+    </script>
+</body>
+</html>

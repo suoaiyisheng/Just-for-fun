@@ -1,0 +1,21 @@
+        /*实现一个两栏布局，左侧占30%，右侧占70%/
+        /*使用浮动的方法
+        .left{
+            float: left;
+            width: 30%;
+        }
+        .right{
+            float: left;
+            width: 70%;
+        }*/
+        /*使用flex-box的方法
+        main {
+            display: flex;
+        }
+       .left{
+            flex: 3;
+        }
+        .right{
+            flex: 7;
+        }
+        */
