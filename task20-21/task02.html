@@ -7,6 +7,9 @@
         select {
             display: none;
         }
+        .show {
+            display: block;
+        }
     </style>
 </head>
 <body>            
@@ -30,13 +33,34 @@
         <option>爱奇艺</option>        
     </select>
     <script>
-        var active = {
-            activeSelect : '',
-            setActiveSelect : function(selectId){
-                this.activeSelect = selectId;
-            },
-            
-        }
+        (function(){
+            var data = {
+                showSelectId :'',
+            };
+            var octopus = {
+                setSelectId : function(id){
+                    data.showSelectId = id+"-select";
+                },
+                getActive : function(){
+                    return data.showSelectId;
+                }
+            };
+            var view = {
+                init : function(){
+                    var ipts = document.getElementsByTagName('input');
+                    for(var i =0;i<ipts.length;i++){
+                        ipts[i].onfocus = function(){
+                            if(octopus.getActive()){
+                            document.getElementById(octopus.getActive()).classList.remove('show');
+                            };
+                            octopus.setSelectId(this.getAttribute('id'));
+                            document.getElementById(octopus.getActive()).classList.add('show');
+                        }
+                    }
+                }
+            }
+            view.init();
+        })();
     </script>
 </body>
 </html>
