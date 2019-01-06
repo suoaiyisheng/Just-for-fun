@@ -22,7 +22,7 @@
                 fadeBtn = document.querySelector('#fade-btn'),
                 currentOpacity;
             function fadeOut(){
-                currentOpacity= parseFloat(fadeObj.getAttribute('data-Opacity')).toFixed(2);
+                currentOpacity= parseFloat(fadeObj.getAttribute('data-Opacity'));
                 if(currentOpacity >0){
                     currentOpacity -= 0.01;
                     fadeObj.style.opacity = currentOpacity;
@@ -35,7 +35,7 @@
                 }
             }
             function fadeIn(){
-                currentOpacity= parseFloat(fadeObj.getAttribute('data-Opacity'));
+                currentOpacity=  parseFloat(fadeObj.getAttribute('data-Opacity'));
                 if(currentOpacity < 1){
                 currentOpacity += 0.01;
                 fadeObj.setAttribute('data-Opacity',currentOpacity.toFixed(2));//会将currentOpacity转化为字符串型
@@ -46,7 +46,7 @@
                     fadeBtn.setAttribute('data-controll','out');
                 }
                 }
-            }
+            }//toFixed的返回值是字符串,输入数字，输出字符串
             fadeBtn.onclick = function(){
                 var controll = fadeBtn.getAttribute('data-controll');
                 if(controll == "out"){
