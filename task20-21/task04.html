@@ -22,11 +22,11 @@
                 fadeBtn = document.querySelector('#fade-btn'),
                 currentOpacity;
             function fadeOut(){
-                currentOpacity= parseFloat(fadeObj.getAttribute('data-Opacity')).toFixed(1);
+                currentOpacity= parseFloat(fadeObj.getAttribute('data-Opacity')).toFixed(2);
                 if(currentOpacity >0){
                     currentOpacity -= 0.01;
                     fadeObj.style.opacity = currentOpacity;
-                    fadeObj.setAttribute('data-Opacity',currentOpacity.toFixed(1));//会将currentOpacity转化为字符串型
+                    fadeObj.setAttribute('data-Opacity',currentOpacity.toFixed(2));//会将currentOpacity转化为字符串型
                     setTimeout(fadeOut,30);
                     if(!currentOpacity){
                         fadeBtn.innerText = "淡入";
@@ -38,7 +38,7 @@
                 currentOpacity= parseFloat(fadeObj.getAttribute('data-Opacity'));
                 if(currentOpacity < 1){
                 currentOpacity += 0.01;
-                fadeObj.setAttribute('data-Opacity',currentOpacity.toFixed(1));//会将currentOpacity转化为字符串型
+                fadeObj.setAttribute('data-Opacity',currentOpacity.toFixed(2));//会将currentOpacity转化为字符串型
                 fadeObj.style.opacity = currentOpacity; 
                 setTimeout(fadeIn,30);
                 if(parseInt(currentOpacity) == 1){
