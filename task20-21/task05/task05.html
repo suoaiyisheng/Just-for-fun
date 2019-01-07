@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>smile</title>
+    <style>
+        .smile{
+            height: 480px;
+            width: 480px;
+            background-image: url(task05.jpg);
+            background-position: 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="smile"></div>
+    <script>
+        (function(){
+            var data = {
+                x: 0,
+                y: 0
+            };
+            var octopus = {
+                toNext : function(){
+                    data.y += 480; 
+                },
+                getX : function(){
+                    return data.x;
+                },
+                getY : function(){
+                    return data.y;
+                }
+            }
+            var view = {
+                init : function(){
+                    this.smile = document.querySelector('.smile');
+                    setTimeout(view.render,500);
+                },
+                render : function(){
+                    var pos;
+                    octopus.toNext();
+                    pos= ' '+octopus.getX()+' '+octopus.getY();
+                    view.smile.style.backgroundPosition = pos;
+                    if(octopus.getY() < 8160){
+                    setTimeout(view.render,500);
+                    }
+                }
+            }
+            view.init();
+        })();
+    </script>
+</body>
+</html>
