@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组转对象</title>
+</head>
+<body>
+    <script>
+        var menuArr = [
+            [1, "Area1", -1],
+            [2, "Area2", -1],
+            [3, "Area1-1", 1],
+            [4, "Area1-2", 1],
+            [5, "Area2-1", 2],
+            [6, "Area2-2", 2],
+            [7, "Area1-2-3", 4],
+            [8, "Area2-2-1", 6]
+        ];
+        var obj = {};
+        var visited = [];
+        for (var index = 0; index < menuArr.length; index++) {
+            visited[index] = 0;
+        }
+        function shift(obj,array){
+            array.forEach(element => {
+                if(!visited[element[0]]){
+                    var o = {},
+                        arr = [];//筛子
+                    o["name"] = element[1];
+                    obj[element[0]+""] = o;
+                    visited[element[0]] = 1;
+                    menuArr.forEach( cell=> {
+                        if( cell[2] == element[0]){
+                            arr.push( cell);
+                        }
+                    });
+                    if(arr.length != 0){
+                        o["subMenu"] = {};
+                        shift(o["subMenu"],arr);
+                    }
+                }
+            });
+        }
+        shift(obj,menuArr);
+    </script>
+</body>
+</html>

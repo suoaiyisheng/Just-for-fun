@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>排序</title>
+</head>
+<body>
+    <script>
+        var arr1 = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+        //将上面数组分别按从大到小以及从小到大进行排序后在console中输出;
+        function compare1(a,b){
+            return a-b;
+        }//降序排列;
+        function compare2(a,b){
+            return b-a;
+        }//降序排列;
+        //console.log(arr.sort(compare1));
+        console.log(arr1.sort(compare2));
+        //①预测错误，正确结果是①为降序，②为升序，思考：如果arr = [2,1];进入程序返回1，b会排序到a之前，1会排在2之前
+        var arr2 = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+        function compare3(a,b){
+            return a.charCodeAt(0) - b.charCodeAt(0);
+        }//降序排列;
+        function compare4(a,b){
+            return b.charCodeAt(0) - a.charCodeAt(0);
+        }
+        //arr2.sort(compare3);
+        console.log(arr2.sort(compare3));
+        var arr3 = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+        function compare5(a,b) {
+            return b[1] - a[1];
+        }
+        console.log(arr3.sort(compare5));
+    </script>
+</body>
+</html>

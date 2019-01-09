@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象转换数组</title>
+</head>
+<body>
+    <script>
+        var scoreObject = {
+            "Tony": {
+                "Math": {
+                    "高数" : 120,
+                    "线代" : 110,
+                    "概率" : {
+                        "第一学期" : 80,
+                        "第二学期" : 90,
+                        "第三学期" : 100
+                    }
+                },
+                "English": 79,
+                "Music": 68
+            }, 
+            "Simon": {
+                "Math": 100,
+                "English": 95,
+                "Music": 98
+            }, 
+            "Annie": {
+                "Math": 54,
+                "English": 65,
+                "Music": 88
+            }
+        }
+        function change() {
+            var a = [];
+            i = 0;
+            for (var key in scoreObject) {
+                if (scoreObject.hasOwnProperty(key)) {
+                    var b = [];
+                    b[0] = key;
+                    a.push(b);
+                }
+            }
+            for (var key in scoreObject) {
+                if (scoreObject.hasOwnProperty(key)) {
+                shfit(a[i],scoreObject[key]);i++;
+                }
+            }
+            
+        }
+        function shfit (arr,element){
+            for (var key in element) {
+                if (element.hasOwnProperty(key)) {
+                    if( typeof(element[key]) == "object" ){
+                        shfit(arr,element[key]);
+                    }else{
+                        arr.push(element[key]);
+                    }
+                }
+            }
+        
+        }
+        
+    </script>
+</body>
+</html>

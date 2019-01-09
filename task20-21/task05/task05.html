@@ -36,18 +36,18 @@
             var view = {
                 init : function(){
                     this.smile = document.querySelector('.smile');
-                    setTimeout(view.render,500);
+                    setTimeout(this.render.bind(view),300);
                 },
                 render : function(){
                     var pos;
                     octopus.toNext();
-                    pos= ' '+octopus.getX()+' '+octopus.getY();
-                    view.smile.style.backgroundPosition = pos;
+                    pos= octopus.getX()+'px '+octopus.getY()+'px';
+                    this.smile.style.backgroundPosition = pos;
                     if(octopus.getY() < 8160){
-                    setTimeout(view.render,500);
+                    setTimeout(this.render.bind(view),300);
                     }
                 }
-            }
+            }//为什么这样写的话，this不能指向view,这样的情形下该如何解决BUG
             view.init();
         })();
     </script>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>25-27</title>
+</head>
+<body>
+    <p>Time:<span id="show"></span></p>
+    <script>
+        var data = {
+            year : null,
+            month : null,
+            date : null,
+            day : null,
+            hours : null,
+            minutes : null,
+            seconds : null,
+        }
+        var octopus = {
+            getYear : function () {
+                return data.year;
+            },
+            setYear : function () {
+                data.year = new Date().getFullYear();
+            },
+            getMonth : function () {
+                return data.month+1;
+            },
+            setMonth : function () {
+                data.month = new Date().getMonth();
+            },
+            getDate : function () {
+                return data.date;
+            },
+            setDate : function () {
+                data.date = new Date().getDate();
+            },
+            getDay : function () {
+                return data.day;
+            },
+            setDay : function () {
+                data.day = new Date().getDay();
+            },
+            getHours : function () {
+                return data.hours;
+            },
+            setHours : function () {
+                data.hours = new Date().getHours();
+            },
+            getMinutes : function () {
+                return data.minutes;
+            },
+            setMinutes : function () {
+                data.minutes = new Date().getMinutes();
+            },
+            getSecond : function(){
+                return data.seconds;
+            },
+            setSecond : function () {
+                data.seconds = new Date().getSeconds();
+            }
+        }
+        var view = {
+            init : function () {
+                this.show = document.querySelector('#show'),
+                this.result = null;
+                    setInterval(function(){
+                        this.render();
+                        this.show.innerText = this.result;
+                    }.bind(view),1000);
+            },
+            standard : function (str) {
+                if(str.length == 1){
+                    return "0"+str;
+                }else{
+                    return str;
+                }
+            },
+            render : function () {
+                octopus.setYear();
+                octopus.setMonth();
+                octopus.setDay();
+                octopus.setDate();
+                octopus.setHours();
+                octopus.setMinutes();
+                octopus.setSecond();
+                this.result = octopus.getYear() + "年" + view.standard(octopus.getMonth()+'') + "月" + view.standard(octopus.getDate()+'') + "日星期" + octopus.getDay() +'  '+ view.standard(octopus.getHours()+'') + ':' + view.standard(octopus.getMinutes()+'') + ':' + view.standard(octopus.getSecond()+'');
+            }
+        }
+        view.init();
+    </script>
+</body>
+</html>

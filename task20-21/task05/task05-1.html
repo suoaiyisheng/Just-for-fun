@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>smile</title>
+    <style>
+        .smile{
+            height: 480px;
+            width: 480px;
+            background-image: url(task05.jpg);
+            background-position: 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="smile"></div>
+    <script>
+       var smile = document.querySelector('.smile');
+       //smile.style.backgroundPosition = "-10px "+"-10px";
+       smile.style.cssText = "background-position: -10px -10px;"
+       //JS动态设置CSS必须注意，不能像写CSS一样那样写，一定要写单位
+    </script>
+</body>
+</html>

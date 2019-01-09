@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task04-4</title>
+</head>
+<body>
+    <input id="queue-input" type="text">
+    <p id="queue-cont">队列内容：apple-&gt;pear</p>    
+    <button id="in-btn">入队</button>
+    <button id="out-btn">出队</button>
+    <button id="font-btn">打印队头元素内容</button>
+    <button id="empty-btn">判断队列是否为空</button>
+    
+    <script>
+    (function(){
+        var data = {
+            queue : ["apple", "pear"]
+        };
+        //队头对应的第一个元素
+        var queueObj = {
+            queue : null,
+            enQueue : function (element) {
+                    this.queue.unshift(element);
+            },
+            deQueue : function () {
+                if(!this.isEmpty()){
+                    this.queue.pop(this.queue);
+                }
+            },
+            isEmpty : function(){
+                var flag = false;
+                if(this.queue.length == 0){
+                    flag = true;
+                }
+                return flag;
+            },
+            getHead : function(){
+                return this.queue[0];
+            }
+        }
+        var octopus = Object.create(queueObj);
+        octopus.queue = data["queue"];
+        var view = {
+            init : function(){
+                this.ipt = document.querySelector("#queue-input");
+                this.queueCont = document.querySelector("#queue-cont");
+                this.inBtn = document.querySelector("#in-btn");
+                this.outBtn = document.querySelector("#out-btn");
+                this.fontBtn = document.querySelector("#font-btn");
+                this.emptyBtn = document.querySelector("#empty-btn");
+                this.result = null;
+                console.log (this.queueCont.innerText);
+                this.inBtn.onclick = function(){
+                    octopus.enQueue(this.ipt.value);
+                    this.result = "队列元素为" + octopus.queue.join("-&gt;");
+                    this.render();
+                }.bind(view);
+                this.outBtn.onclick = function () {
+                    octopus.deQueue();
+                    this.result = "队列元素为" + octopus.queue.join("-&gt;");
+                    this.render();
+                }.bind(view);
+                this.fontBtn.onclick = function(){
+                    this.result = "队头元素为" + octopus.getHead();
+                    this.render();
+                }.bind(view);
+                this.emptyBtn.onclick = function () {
+                    if(!octopus.isEmpty()){
+                        this.result = "队列不为空"
+                    }else{
+                        this.result = "大王大王！！！不好啦！！！！队列空了！！！！！！！！！";
+                    }
+                    this.render();
+                }.bind(view);
+            },
+            render : function(){
+                this.queueCont.innerHTML = this.result;
+                //如果是使用实体字符"-&gt;"则不行"-&gt;是HTML实体字符
+            }
+        }
+        view.init();
+    })()
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task04-4</title>
+</head>
+<body>
+    <input id="stack-input" type="text">
+    <p id="stack-cont">栈内容：apple &lt;-pear</p>    
+    <button id="push-btn">进栈</button>
+    <button id="pop-btn">退栈</button>
+    <button id="font-btn">打印栈顶元素内容</button>
+    <button id="empty-btn">判断栈是否为空</button>
+    <script>
+    (function(){
+        var data = {
+            stack : ["apple", "pear"]
+        };
+        //队头对应的第一个元素
+        var queueObj = {
+            stack : null,
+            push : function (element) {
+                    this.stack.push(element);
+            },
+            pop : function () {
+                if(!this.isEmpty()){
+                    this.stack.pop(this.stack);
+                }
+            },
+            isEmpty : function(){
+                var flag = false;
+                if(this.stack.length == 0){
+                    flag = true;
+                }
+                return flag;
+            },
+            getTop : function(){
+                return this.stack[0];
+            }
+        }
+        var octopus = Object.create(queueObj);
+        octopus.stack = data["stack"];
+        var view = {
+            init : function(){
+                this.ipt = document.querySelector("#stack-input");
+                this.stackCont = document.querySelector("#stack-cont");
+                this.inBtn = document.querySelector("#push-btn");
+                this.outBtn = document.querySelector("#pop-btn");
+                this.fontBtn = document.querySelector("#font-btn");
+                this.emptyBtn = document.querySelector("#empty-btn");
+                this.result = null;
+                console.log (this.stackCont.innerText);
+                this.inBtn.onclick = function(){
+                    octopus.push(this.ipt.value);
+                    this.result = "栈元素:" + octopus.stack.join("&lt;-");
+                    this.render();
+                }.bind(view);
+                this.outBtn.onclick = function () {
+                    octopus.pop();
+                    this.result = "栈元素:" + octopus.stack.join("&lt;-");
+                    this.render();
+                }.bind(view);
+                this.fontBtn.onclick = function(){
+                    this.result = "栈顶元素为" + octopus.getTop();
+                    this.render();
+                }.bind(view);
+                this.emptyBtn.onclick = function () {
+                    if(!octopus.isEmpty()){
+                        this.result = "栈不为空"
+                    }else{
+                        this.result = "大王大王！！！不好啦！！！！队列空了！！！！！！！！！";
+                    }
+                    this.render();
+                }.bind(view);
+            },
+            render : function(){
+                this.stackCont.innerHTML = this.result;
+                //如果是使用实体字符"-&gt;"则不行"-&gt;是HTML实体字符
+            }
+        }
+        view.init();
+    })()
+    </script>
+</body>
+</html>
