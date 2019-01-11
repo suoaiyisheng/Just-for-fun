@@ -65,6 +65,9 @@
                         }
                         break;
                     };
+                    case 27:{
+                        this.iptSelect();
+                    }
                 }
             }.bind(view),
             this.ul.onclick = function(e){
@@ -75,9 +78,6 @@
                     view.renderShow();
                     view.focus();
                 }
-            }
-            window.onload = function () {
-                view.focus();
             }
         },
         renderTipBlock : function (userIpt) {
@@ -173,6 +173,9 @@
         },
         focus : function(){
             view.inputDom.focus();
+        },
+        iptSelect : function () {
+            view.inputDom.select();
         }
     }
     view.init();
