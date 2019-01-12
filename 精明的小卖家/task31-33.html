@@ -16,30 +16,41 @@
         <ul> 
             <li><input type="radio" name="region" value="华东">华东</li> 
             <li><input type="radio" name="region" value="华南">华南</li> 
-            <li><input type="radio" name="region" value="华北">华北</li> 
-        </ul> 
+            <li><input type="radio" name="region" value="华北">华北</li>
+        </ul>
+        <ul>
+            <li><input type="radio" name="product" value="手机">手机</li> 
+            <li><input type="radio" name="product" value="笔记本">笔记本</li> 
+            <li><input type="radio" name="product" value="智能音箱">智能音箱</li> 
+        </ul>
     </form> 
     <div id="table-wrapper">
+        <table id="show-table"></table>
     </div>
-    
     <script type="text/template" data-template="sale">
-        <tr>
-            <th>商品</th>
-            <th>地区</th>
-            <th>1月</th>
-            <th>2月</th>
-            <th>3月</th>
-            <th>4月</th>
-            <th>5月</th>
-            <th>6月</th>
-            <th>7月</th>
-            <th>8月</th>
-            <th>9月</th>
-            <th>10月</th>
-            <th>11月</th>
-            <th>12月</th>
-        </tr>
-        {{content}}
+        <table>
+            <thead>
+                <tr>
+                        <th>商品</th>
+                        <th>地区</th>
+                        <th>1月</th>
+                        <th>2月</th>
+                        <th>3月</th>
+                        <th>4月</th>
+                        <th>5月</th>
+                        <th>6月</th>
+                        <th>7月</th>
+                        <th>8月</th>
+                        <th>9月</th>
+                        <th>10月</th>
+                        <th>11月</th>
+                        <th>12月</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {{content}}
+            </tbody>
+        <table>
     </script>
     <script src="task31-33.js"></script>
 </body>
