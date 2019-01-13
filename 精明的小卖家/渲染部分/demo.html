@@ -35,8 +35,16 @@
     </script>
     <script>
         var data = {
-            selectProduct : ['手机'],
-            selectRegion : ['华东','华北','华南']
+            selectProduct : {
+                type : 'product',
+                typeText : '产品',
+                value : ['手机']
+            },
+            selectRegion : {
+                type : 'region',
+                typeText : '地区',
+                value : ['华东','华北','华南']
+            }
         }
         var arr = [{
             product: "手机",
@@ -55,43 +63,43 @@
         var template = document.querySelector("script[data-template]").innerHTML;
         var selectProduct = data.selectProduct;
         var selectRegion = data.selectRegion;
+
+        //这样写，即使我改变数据的格式，我需要修改的地方也只有这一处，这样的写法~好！
         var content = '';
-        function render(arr) {
-            if (selectProduct.length == 1 && selectRegion.length == 3){
-                var flag = 0;
-                template = template.replace(/{{thead-firstTd-content}}/g,"产品");
-                template = template.replace(/{{thead-secondTd-content}}/g,"地区");
-                arr.forEach(function(element){
-                var trContent = "<tr>",
-                    tdContent;
-                for (var key in element) {
-                    if (element.hasOwnProperty(key)) {
-                        if( element[key].constructor == Array ){
-                            element[key].forEach(a => {
-                                tdContent = "<td>" + a + "</td>";
-                                trContent += tdContent;
-                            });
-                        }else{
-                            if( key == "product"){
-                                if( flag == 0){
-                                    trContent += "<td "+ "rowspan='" +arr.length + "' >" + element[key] + "</td>";
-                                    flag = 1;
-                                }
+        function render(arr,winSelect,loserSelect) {
+            var flag = 0;
+            template = template.replace(/{{thead-firstTd-content}}/g,winSelect.typeText);
+            template = template.replace(/{{thead-secondTd-content}}/g,loserSelect.typeText);
+            arr.forEach(function(element){
+            var trContent = "<tr>",
+                tdContent;
+            for (var key in element) {
+                if (element.hasOwnProperty(key)) {
+                    if( element[key].constructor == Array ){
+                        element[key].forEach(a => {
+                            tdContent = "<td>" + a + "</td>";
+                            trContent += tdContent;
+                        });
+                    }else{
+                        if( key == winSelect){
+                            if( flag == 0){
+                                trContent += "<td "+ "rowspan='" +arr.length + "' >" + element[key] + "</td>";
+                                flag = 1;
                             }
-                            else{
-                                trContent += "<td>" + element[key] + "</td>";
-                            }
+                        }
+                        else{
+                            trContent += "<td>" + element[key] + "</td>";
                         }
                     }
                 }
-                trContent += "</tr>";
-                content += trContent;
-            });
-            template = template.replace( /{{content}}/g,content);
-            table.innerHTML = template;
-        }
+            }
+            trContent += "</tr>";
+            content += trContent;
+        });
+        template = template.replace( /{{content}}/g,content);
+        table.innerHTML = template;
     }
-    render(arr);
+    render(arr,selectProduct,selectRegion);
     </script>
 </body>
 </html>
