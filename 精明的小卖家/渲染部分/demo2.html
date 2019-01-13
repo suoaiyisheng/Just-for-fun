@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo1</title>
+</head>
+<body>
+    <div id="table-wrapper">
+        <table id="show-table"></table>
+    </div>
+    <script type="text/template" data-template="sale">
+        <thead>
+            <tr>
+                <th>{{thead-firstTd-content}}</th>
+                <th>{{thead-secondTd-content}}</th>
+                <th>1月</th>
+                <th>2月</th>
+                <th>3月</th>
+                <th>4月</th>
+                <th>5月</th>
+                <th>6月</th>
+                <th>7月</th>
+                <th>8月</th>
+                <th>9月</th>
+                <th>10月</th>
+                <th>11月</th>
+                <th>12月</th>
+            </tr>
+        </thead>
+        <tbody>
+                {{content}}
+        </tbody>
+    </script>
+    <script>
+        var data = {
+            selectProduct : {
+                type : 'product',
+                typeText : '产品',
+                value : ['手机']
+            },
+            selectRegion : {
+                type : 'region',
+                typeText : '地区',
+                value : ['华东']
+            }
+        }
+        var arr = [{
+            product: "笔记本电脑",
+            region: "华东",
+            sale: [120, 100, 140, 160, 180, 185, 190, 210, 230, 245, 255, 270]
+        }];
+        var table = document.querySelector('#show-table');
+        var template = document.querySelector("script[data-template]").innerHTML;
+        var selectProduct = data.selectProduct;
+        var selectRegion = data.selectRegion;
+        function render(arr) {
+        arr.forEach(function(element){
+            var trContent = "<tr>",
+                tdContent;
+                content = '';
+           template = template.replace(/{{thead-firstTd-content}}/g,"产品");
+           template = template.replace(/{{thead-secondTd-content}}/g,"地区");
+            for (var key in element) {
+                if (element.hasOwnProperty(key)) {
+                    if( element[key].constructor == Array ){
+                        element[key].forEach(a => {
+                            tdContent = "<td>" + a + "</td>";
+                            trContent += tdContent;
+                        });
+                    }else{
+                        trContent += "<td>" + element[key] + "</td>";
+                    }
+                }
+            }
+            trContent += "</tr>";
+            content += trContent;
+        });
+        template = template.replace( /{{content}}/g,content);
+        table.innerHTML = template;
+    }
+    render(arr);
+    </script>
+</body>
