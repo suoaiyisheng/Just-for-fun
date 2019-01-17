@@ -9,8 +9,38 @@
 <body>
     <div id="region-checkbox-wrapper"></div>
     <div id="product-checkbox-wrapper"></div>
+    <div><button id="control">点我保存~</button></div>
+    <div id="table-wrapper">
+        <table id="show-table"></table>
+    </div>
     <script type="text/template" data-template="checkbox">
-        <input type="checkbox" name="{{selectType}}" id="{{selectType}}" value="{{value}}" checkbox-type="{{checkboxType}}">{{value}}<br>
+        <label>
+            <input type="checkbox" name="{{selectType}}" id="{{selectType}}" value="{{value}}" checkbox-type="{{checkboxType}}">
+            {{value}}
+        </label>
+    </script>
+    <script type="text/template" data-template="sale">
+        <thead>
+            <tr>
+                <th>{{thead-firstTd-content}}</th>
+                <th>{{thead-secondTd-content}}</th>
+                <th>1月</th>
+                <th>2月</th>
+                <th>3月</th>
+                <th>4月</th>
+                <th>5月</th>
+                <th>6月</th>
+                <th>7月</th>
+                <th>8月</th>
+                <th>9月</th>
+                <th>10月</th>
+                <th>11月</th>
+                <th>12月</th>
+            </tr>
+        </thead>
+        <tbody>
+                {{content}}
+        </tbody>
     </script>
     <script src="task31-33-1.js"></script>
     <script src="task31-33-1-2.js"></script>

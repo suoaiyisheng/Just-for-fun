@@ -65,9 +65,9 @@
         var selectRegion = data.selectRegion;
 
         //这样写，即使我改变数据的格式，我需要修改的地方也只有这一处，这样的写法~好！
-        var content = '';
         function render(arr,winSelect,loserSelect) {
-            var flag = 0;
+            var content = '';
+                flag = 0;
             template = template.replace(/{{thead-firstTd-content}}/g,winSelect.typeText);
             template = template.replace(/{{thead-secondTd-content}}/g,loserSelect.typeText);
             arr.forEach(function(element){
