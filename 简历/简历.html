@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简历</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        @font-face {
+        font-family: 'iconfont';  /* project id 998827 */
+        src: url('https://at.alicdn.com/t/font_998827_8hn7i0v3z14.eot');
+        src: url('https://at.alicdn.com/t/font_998827_8hn7i0v3z14.eot?#iefix') format('embedded-opentype'),
+        url('https://at.alicdn.com/t/font_998827_8hn7i0v3z14.woff2') format('woff2'),
+        url('https://at.alicdn.com/t/font_998827_8hn7i0v3z14.woff') format('woff'),
+        url('https://at.alicdn.com/t/font_998827_8hn7i0v3z14.ttf') format('truetype'),
+        url('https://at.alicdn.com/t/font_998827_8hn7i0v3z14.svg#iconfont') format('svg');
+        }
+        .iconfont{
+            font-family:"iconfont" !important;
+            font-size:20px;font-style:normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        html,body,.container{
+            height: 100%;
+            width: 100%;
+            font-size: 14px;
+            font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(https://ojlty2hua.qnssl.com/image-1547773960386-5oq96LGh55qE5puy57q_LmpwZw==.jpg);
+            background-repeat: repeat;
+        }
+        .card{
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            height: 90%;
+            padding: 20px;
+            background: #FFEFBA;
+            background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
+            background: linear-gradient(to right, #FFFFFF, #FFEFBA); 
+            opacity: 0.9;
+            border-radius: 20px;
+            box-shadow: 0px 00px 10px 3px #ed213a;
+        }
+        .header{
+            flex : 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 3px solid #ff3a2f;
+        }
+        .message{
+            background: #EF3B36;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #FFFFFF, #EF3B36);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #FFFFFF, #EF3B36); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background-image : -webkit-linear-gradient(left,#FFFFFF,#EF3B36,#FFFFFF,#EF3B36,#FFFFFF);
+            font-size: 20px;
+            font-weight: bold;
+            -webkit-background-clip: text !important;
+            background-clip: text;
+            color: transparent;
+            -webkit-background-size: 200% 100%;
+            -webkit-animation: masked-animation 2s infinite linear;
+            animation: masked-animation 2s infinite linear;
+        }
+        @keyframes masked-animation
+        {
+            0%  { background-position: 0 0;}
+            100% { background-position: -100% 0;}
+        }
+        .main{
+            flex : 3;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow: auto;
+        }
+        .icon-wrapper{
+            flex: 1;
+            text-align: center;
+            line-height: 18px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .icon{
+            position: relative;
+            height: 100px;
+            width: 100px;
+            margin : 0 auto;
+            border-radius: 50%;
+            background-image: url(https://ojlty2hua.qnssl.com/image-1547789595041-5oiRLmpwZw==.jpg?imageView2/1/w/200/h/200/q/75|imageslim);
+            background-size:100% 100%;    
+        }
+        .intro-wrapper{
+            flex: 2;
+            display: flex;
+        }
+        .intro-left,.intro-right{
+            flex:1;
+        }
+        .intro-left h2,.intro-right h2{
+            margin-bottom: 10px;
+        }
+        .intro-left label,.intro-right label{
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .intro-left p,.intro-right p{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <p><i class="iconfont">&#xe605;</i><span class="message">正在通关做一个更好的程序员副本的胡国涛先生：恭喜您获得一张人物卡</span></p>
+            </div>
+            <div class="main">
+                <div class="icon-wrapper">
+                    <div class="icon"></div>
+                    <span>韦雯悦</span>
+                </div>
+                <div class="intro-wrapper">
+                    <div class="intro-left">
+                        <h2>基础属性</h2>
+                        <ul>
+                            <li>
+                                <label>
+                                    <input name="basis" type="checkbox" value="study" checked/>
+                                    学习习惯
+                                </label>
+                                <p>①能够在尝试过入门教程之后，阅读文档</p>
+                                <p>②能够快速学习新知识，对新知识充满好奇心，自学过php</p>
+                                <p>③遇到问题肯专研</p>
+                            </li>
+                            <li>
+                                <label>
+                                    <input name="basis" type="checkbox" value="study" checked/>
+                                    学习经历
+                                </label>
+                                <p>①考研前接触过前端，能够熟练运用javascript的函数，了解this，原型链的知识，了解数据和渲染分离的思想，了解前端和后端的交互流程</p>
+                                <p>②跨考计算机失败，但是经过考研，对数据结构[图，栈，队列]，基础算法[排序，查找]，递归思想有了一些认识</p>
+                                <p>③在感觉自己考研无望后，学习今年的百度前段技术学院的部分课程来复习前端知识,完成的代码在<a>https://github.com/suoaiyisheng/Just-for-fun</a></p>
+                            </li>
+                            <li>
+                                <label>
+                                    <input name="basis" type="checkbox" value="study" checked/>
+                                    责任心
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="intro-right">
+                            <h2>技能</h2>
+                            <ul>
+                                <li>
+                                    <label>
+                                        <input name="basis" type="checkbox" value="study"/>
+                                        bootstrap和JQuery
+                                    </label>
+                                    <p>①尝试使用过bootstrap</p>
+                                    <p>②虽然对两个框架并不熟练，但是因为我对原生有一定的了解，给我确定的项目，我应该可以快速上手</p>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input name="basis" type="checkbox" value="study" checked/>
+                                        知识储备
+                                    </label>
+                                        <p>①了解基础的布局知识，对HTML，CSS有一定了解</p>
+                                        <p>②熟悉原生的DOM操作，基本类型的API，对对象，对this的使用，原型链的知识有一定了解</p>
+                                        <p>③对数据和渲染分离有一定认知</p>
+                                        <p>④了解前后端交互流程</p>
+                                        <p>⑤对数据结构[图，栈，队列]，基础算法[排序，查找]具有一定的理论认知</p>
+                                        <p>⑥能够阅读简单的英文文档和技术博客，使用stackoverflow来查询问题</p>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
