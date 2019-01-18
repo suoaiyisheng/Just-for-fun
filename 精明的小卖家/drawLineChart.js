@@ -89,7 +89,6 @@ var lineChartview = {
                       .tickFormat(function (d) {
                           return d+"月"
                       })
-            
         //y轴
         var yAxis = d3.axisLeft(yScale)
                         
@@ -111,6 +110,9 @@ var lineChartview = {
             height = this.height,
             linePath = this.linePath,
             colors = [];
+            if(svg.html()){
+                svg.html('');
+            }
             for (let index = 0; index < dataset.length; index++) {
                 this.getColor(colors);
             }
@@ -127,16 +129,14 @@ var lineChartview = {
                 .attr("stroke",function(d,i){
                     return colors[i];
                 });
-            
-
-            var markStep = 30;
+            var markStep = 20;
                 
             var gMark = svg.selectAll(".gMark")
                             .data(dataset)
                             .enter()
                             .append("g")
                             .attr("transform",function(d,i){
-                                return "translate(" + padding.left  + "," + ( height - padding.bottom  - i*markStep +20)  +")";
+                                return "translate(" + padding.left  + "," + ( height - padding.bottom  + i*markStep +20)  +")";
                             });
                 
             gMark.append("rect")

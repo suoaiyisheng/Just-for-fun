@@ -42,7 +42,7 @@ var barChartview = {
             this.svg =  d3.select('.barCharWrapper')
             .append('svg')
             .attr('width',this.width)
-            .attr('height',this.height)
+            .attr('height',this.height);
         };
         this.dataset = barCharOctopus.getDataset();
         this.dataXtext = barCharOctopus.getDataXtext();
@@ -70,6 +70,9 @@ var barChartview = {
             svg = this.svg,
             height = this.height;
             yAxisWidth = this.yAxisWidth;
+        if(svg.html()){
+            svg.html('');
+        }
         var rect = svg.selectAll('g')
         .data(dataset)
         .enter()

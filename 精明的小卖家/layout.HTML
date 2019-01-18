@@ -39,8 +39,9 @@
         .show-chart svg{
             box-sizing: content-box;
         }
-        .barCharWrapper svg{
-            float: right;
+        .barCharWrapper,.lineCharWrapper{
+            display: flex;
+            justify-content: center;
         }
         .none{
             visibility: hidden;
@@ -60,7 +61,7 @@
                     <table id="show-table" class ="table table-hover"></table>
                 </div>
                 <div class="show-chart clearfix">
-                    <div class="col-md-6 barCharWrapper"></div>
+                    <div class="col-md-6 barCharWrapper"><span></span></div>
                     <div class="col-md-6 lineCharWrapper"></div>
                 </div>
             </div>

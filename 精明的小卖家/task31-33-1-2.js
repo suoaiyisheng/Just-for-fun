@@ -117,7 +117,11 @@ var tableView = {
                 barCharOctopus.setSoureData(arr);
                 barChartview.render();
                 }else{
-                    document.querySelector('.barCharWrapper').innerHTML = '<span>sorry!!!柱形图只提供单个服务！！！对不住了！！请看→</span>';
+                    if(!document.querySelector('.barCharWrapper span').innerHTML){
+                        document.querySelector('.barCharWrapper span').innerHTML += '<span>sorry!!!柱形图只提供单个服务！！！对不住了！！请看折线图</span>'
+                    }else{
+                        document.querySelector('.barCharWrapper svg').innerHTML = '';
+                    }
                 }
             //lineChart部分的工作
                 lineChartOctopus.setSourData(arr);
@@ -140,6 +144,32 @@ var tableView = {
         }else{
             this.renderCase3(arr);
         }
+        //绑定事件
+        d3.selectAll('tbody>tr')
+          .data(arr)
+          .on("mouseover",function (d) {
+              var newArr = [];
+              newArr.push(d);
+              barCharOctopus.setSoureData(newArr);
+              barChartview.render();
+              lineChartOctopus.setSourData(newArr);
+              lineChartview.render();
+              document.querySelector('.barCharWrapper span').innerHTML = '';
+          })
+          .on("mouseout",function (d) {
+               if(arr.length == 1){
+                    barCharOctopus.setSoureData(arr);
+                    barChartview.render();
+                }else{//恢复成原来的样子
+                    if(!document.querySelector('.barCharWrapper span').innerHTML){
+                        document.querySelector('.barCharWrapper span').innerHTML += '<span>sorry!!!柱形图只提供单个服务！！！对不住了！！请看折线图</span>'
+                    }
+                    document.querySelector('.barCharWrapper svg').innerHTML = '';
+                }
+            //lineChart部分的工作
+                lineChartOctopus.setSourData(arr);
+                lineChartview.render();
+          })
     },//路由控制渲染
     renderCase1 : function render(arr,winSelect,loserSelect) {
         var content = '';
