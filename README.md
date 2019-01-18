@@ -4,11 +4,11 @@
 ---
  *  >项目① 我是精明的小卖家（二)
     >> [需求描述](http://ife.baidu.com/course/detail/id/55)<br>
-    >>[我的完成]
+    >>[我的完成](https://suoaiyisheng.github.io/Just-for-fun/%E7%B2%BE%E6%98%8E%E7%9A%84%E5%B0%8F%E5%8D%96%E5%AE%B6/layout.HTML)
   可视化部分有点作弊使用了d3.js框架 
 * > 项目②给爱的人发个邮件吧
-  >>[需求描述](http://ife.baidu.com/course/detail/id/52)
-  >>[我的完成](https://suoaiyisheng.github.io/Just-for-fun/%E7%B2%BE%E6%98%8E%E7%9A%84%E5%B0%8F%E5%8D%96%E5%AE%B6/layout.HTML?tdsourcetag=s_pcqq_aiomsg)
+  >>[需求描述](http://ife.baidu.com/course/detail/id/52)<br>
+  >>[我的完成](https://suoaiyisheng.github.io/Just-for-fun/task28-30/task.html)
 * >项目：我真正的简历
-  >>[需求描述]
-  >>[我的完成]
+  >>[我的完成]（https://suoaiyisheng.github.io/Just-for-fun//%E7%AE%80%E5%8E%86/%E7%AE%80%E5%8E%86.html）
+    用一个早上撸了一个丑陋的简历希望不要嫌弃~
