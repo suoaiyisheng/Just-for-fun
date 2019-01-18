@@ -1,7 +1,7 @@
 # Just-for-fun
 记录考研失败之后的前端学习生活~
 #从确定考研失败之后就开始做百度前端的任务，现在做到了我是精明的小卖家部分
-但是有点作弊，数据可视化部分我是用d3.js完成的http://ife.baidu.com/college/detail/id/5
+<a>但是有点作弊，数据可视化部分我是用d3.js完成的http://ife.baidu.com/college/detail/id/5</a>
 #项目① 我是精明的小卖家（二）
 http://ife.baidu.com/course/detail/id/52
 需求描述
