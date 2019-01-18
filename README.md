@@ -10,4 +10,4 @@
   >>[需求描述](http://ife.baidu.com/course/detail/id/52)<br>
   >>[我的完成](https://suoaiyisheng.github.io/Just-for-fun/task28-30/task.html)
 * >项目：我真正的简历
-  >>[我的完成](https://suoaiyisheng.github.io/Just-for-fun/task28-30/task.html)
+  >>[我的完成](https://suoaiyisheng.github.io/Just-for-fun//%E7%AE%80%E5%8E%86/%E7%AE%80%E5%8E%86.html)
