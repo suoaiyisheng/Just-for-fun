@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+  <title>test1</title>
+</head>
+
+<body>
+  <div>
+    <table id="myTable">
+      <thead>
+        <tr>
+          <th>产品</th>
+          <th>地区</th>
+          <th>1月</th>
+          <th>2月</th>
+          <th>3月</th>
+          <th>4月</th>
+          <th>5月</th>
+          <th>6月</th>
+          <th>7月</th>
+          <th>8月</th>
+          <th>9月</th>
+          <th>10月</th>
+          <th>11月</th>
+          <th>12月</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{product}}</td>
+          <td>{{region}}</td>
+          <template v-for="item in sale">
+            <td><input v-model="item.saleCount">{{item.saleCount}}</td>
+          </template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    new Vue({
+      el: '#myTable',
+      data() {
+        return {
+          product: "手机",
+          region: "华东",
+          sale: [{
+              saleCount: 120
+            }, {
+              saleCount: 100
+            }, {
+              saleCount: 140
+            }, {
+              saleCount: 160
+            }, {
+              saleCount: 180
+            }, {
+              saleCount: 185
+            }, {
+              saleCount: 190
+            }, {
+              saleCount: 210
+            },
+            {
+              saleCount: 230
+            }, {
+              saleCount: 245
+            },
+            {
+              saleCount: 245
+            },
+            {
+              saleCount: 255
+            },
+            {
+              saleCount: 270
+            }
+          ]
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

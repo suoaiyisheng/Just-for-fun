@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>part03</title>
+</head>
+
+<body>
+  <script>
+    var pub = {
+      publish: function () {
+        dep.notify();
+      }
+    };
+    var sub1 = {
+      update: function () {
+        console.log(1);
+      }
+    }
+    var sub2 = {
+      update: function () {
+        console.log(2);
+      }
+    };
+    var sub3 = {
+      update: function () {
+        console.log(3);
+      }
+    };
+
+    function Dep() {
+      this.subs = [sub1, sub2, sub3];
+    }
+    Dep.prototype.notify = function () {
+      this.subs.forEach(function (sub) {
+        sub.update();
+      })
+    }
+    var dep = new Dep();
+    pub.publish();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lesson①</title>
+</head>
+<body>
+    <script>
+        function Observer(data) {
+            this.data = data;
+            this.walk(data);
+        }
+        //Q1：let 和 var 相比有什么好处？是因为var存在哪些缺陷吗？
+        let p = Observer.prototype;
+        p.walk = function (obj) {
+            let val;
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    val = obj[key];
+                    if( typeof val === 'object'){
+                        new Observer(val);
+                    }
+                    this.convert(key,val);
+                }
+            }
+        }
+        p.convert = function (key,val) {
+            Object.defineProperty(this.data,key,{
+                enumerable : true,//Q这两个是什么值
+                configurable : true,
+                get : function () {
+                    console.log("你访问了"+key);
+                    return val;
+                },//get 和 set 会自动调用
+                set : function (newVal) {
+                    console.log('你设置了'+key);
+                    console.log('新的'+key+' = '+newVal)
+                }
+            })
+        }
+        
+        let data = {
+            user: {
+                name: "liangshaofeng",
+                age: "24"
+            },
+            address: {
+                city: "beijing"
+            }
+        };
+
+        let app = new Observer(data);
+
+        //附注①
+        var book = {}; 
+        Object.defineProperties(book, { 
+            _year: {
+                value: 2004,
+                writable: true
+            }, 
+            edition: {
+                value: 1 ,
+                writable : true
+            }, 
+            year: { 
+                get: function(){
+                    return this._year; 
+                }, 
+                set: function(newValue){ 
+                    if (newValue > 2004) { 
+                    this._year = newValue; 
+                    this.edition += newValue - 2004; 
+                    } 
+                } 
+            }
+        });
+        book.year = 2005;
+        console.log( book.edition);
+    </script>
+</body>
+</html>
