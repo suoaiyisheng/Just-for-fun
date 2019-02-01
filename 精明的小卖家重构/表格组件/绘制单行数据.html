@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+  <link rel="stylesheet" href="style.css">
   <title>test1</title>
 </head>
 
@@ -34,8 +35,13 @@
         <tr>
           <td>{{product}}</td>
           <td>{{region}}</td>
-          <template v-for="item in sale">
-            <td><input v-model="item.saleCount">{{item.saleCount}}</td>
+          <template v-for="(item,index) in sale">
+            <td>
+              <input v-model="sale[index]" v-show="edit">
+              <span v-show="!edit">{{item}}</span>
+              <i class="icon-pencil2" @click="edit=true" v-show="!edit"></i>
+              <i class="icon-checkmark2" @click="edit = false" v-show="edit"></i>
+            </td>
           </template>
         </tr>
       </tbody>
@@ -46,40 +52,10 @@
       el: '#myTable',
       data() {
         return {
+          edit: false,
           product: "手机",
           region: "华东",
-          sale: [{
-              saleCount: 120
-            }, {
-              saleCount: 100
-            }, {
-              saleCount: 140
-            }, {
-              saleCount: 160
-            }, {
-              saleCount: 180
-            }, {
-              saleCount: 185
-            }, {
-              saleCount: 190
-            }, {
-              saleCount: 210
-            },
-            {
-              saleCount: 230
-            }, {
-              saleCount: 245
-            },
-            {
-              saleCount: 245
-            },
-            {
-              saleCount: 255
-            },
-            {
-              saleCount: 270
-            }
-          ]
+          sale: [30, 35, 50, 70, 20, 15, 30, 50, 710, 130, 20, 20]
         }
       }
     })
