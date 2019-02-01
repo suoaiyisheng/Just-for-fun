@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+  <link rel="stylesheet" href="font.css">
+  <link rel="stylesheet" href="style.css">
+  <title>test1</title>
+</head>
+
+<body>
+  <div>
+    <table id="myTable">
+      <thead>
+        <tr>
+          <th>产品</th>
+          <th>地区</th>
+          <th>1月</th>
+          <th>2月</th>
+          <th>3月</th>
+          <th>4月</th>
+          <th>5月</th>
+          <th>6月</th>
+          <th>7月</th>
+          <th>8月</th>
+          <th>9月</th>
+          <th>10月</th>
+          <th>11月</th>
+          <th>12月</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="dataItem in data">
+          <td>{{dataItem.product}}</td>
+          <td>{{dataItem.region}}</td>
+          <td v-for="(item,index) in dataItem.saleTd">
+            <span v-show="item.tdTab === 'editting'">
+              <input v-model="dataItem.saleTd[index].saleNum" @keyup.enter="setEdited(item)">
+              <i class=" icon-checkmark" @click="setEdited(item)"></i>
+              <i class="icon-cross" @click="setEdited(item)"></i>
+            </span>
+            <span v-show="item.tdTab === 'edited'" class="edited">
+              <span>{{item.saleNum}}</span>
+              <i class="icon-pencil none editBtn" @click="setEditting(item)"></i>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    new Vue({
+      el: '#myTable',
+      data() {
+        return {
+          sourceData: [{
+              product: "手机",
+              region: "华东",
+              sale: [120, 100, 140, 160, 180, 185, 190, 210, 230, 245, 255, 270]
+            },
+            {
+              product: "手机",
+              region: "华北",
+              sale: [80, 70, 90, 110, 130, 145, 150, 160, 170, 185, 190, 200]
+            },
+            {
+              product: "手机",
+              region: "华南",
+              sale: [220, 200, 240, 250, 260, 270, 280, 295, 310, 335, 355, 380]
+            }
+          ],
+          data: []
+        }
+      },
+      methods: {
+        saleTdObj: function (saleNum) {
+          var obj = {};
+          obj.saleNum = saleNum;
+          obj.tdTab = "edited";
+          return obj
+        },
+        setEdited: function (saleTdObj) {
+          saleTdObj.tdTab = "edited";
+        },
+        setEditting: function (saleTdObj) {
+          saleTdObj.tdTab = "editting";
+        }
+      },
+      created() {
+        this.sourceData.forEach(element => {
+          var obj = {};
+          obj.product = element.product;
+          obj.region = element.region;
+          obj.saleTd = [];
+          element.sale.forEach(item => {
+            obj.saleTd.push(new this.saleTdObj(item))
+          })
+          this.data.push(obj)
+        });
+        console.log(this.data)
+      },
+    })
+  </script>
+</body>
+
+</html>
