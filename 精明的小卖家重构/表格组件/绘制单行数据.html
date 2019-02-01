@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+  <link rel="stylesheet" href="font.css">
   <link rel="stylesheet" href="style.css">
   <title>test1</title>
 </head>
@@ -35,12 +36,17 @@
         <tr>
           <td>{{product}}</td>
           <td>{{region}}</td>
-          <template v-for="(item,index) in sale">
+          <template v-for="(item,index) in saleTd">
             <td>
-              <input v-model="sale[index]" v-show="edit">
-              <span v-show="!edit">{{item}}</span>
-              <i class="icon-pencil2" @click="edit=true" v-show="!edit"></i>
-              <i class="icon-checkmark2" @click="edit = false" v-show="edit"></i>
+              <span v-show="item.tdTab === 'editting'">
+                <input v-model="saleTd[index].saleNum">
+                <i class="icon-checkmark" @click="item.tdTab = 'edited'"></i>
+                <i class="icon-cross" @click="item.tdTab = 'edited'"></i>
+              </span>
+              <span v-show="item.tdTab === 'edited'" class="edited">
+                <span>{{item.saleNum}}</span>
+                <i class="icon-pencil none editBtn" @click="item.tdTab ='editting' "></i>
+              </span>
             </td>
           </template>
         </tr>
@@ -55,9 +61,23 @@
           edit: false,
           product: "手机",
           region: "华东",
-          sale: [30, 35, 50, 70, 20, 15, 30, 50, 710, 130, 20, 20]
+          sale: [30, 35, 50, 70, 20, 15, 30, 50, 710, 130, 20, 20],
+          saleTd: []
         }
-      }
+      },
+      methods: {
+        saleTdObj: function (saleNum) {
+          var obj = {};
+          obj.saleNum = saleNum;
+          obj.tdTab = "edited";
+          return obj
+        }
+      },
+      created() {
+        this.sale.forEach(element => {
+          this.saleTd.push(new this.saleTdObj(element));
+        });
+      },
     })
   </script>
 </body>

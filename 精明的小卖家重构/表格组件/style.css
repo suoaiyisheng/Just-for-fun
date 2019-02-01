@@ -1,34 +1,6 @@
-@font-face {
-  font-family: 'icomoon';
-  src: url('fonts/icomoon.eot?bm5o4z');
-  src: url('fonts/icomoon.eot?bm5o4z#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?bm5o4z') format('truetype'),
-    url('fonts/icomoon.woff?bm5o4z') format('woff'),
-    url('fonts/icomoon.svg?bm5o4z#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
+#myTable .edited:hover .editBtn {
+  display: inline-block;
 }
-
-[class^="icon-"],
-[class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-pencil2:before {
-  content: "\e906";
-}
-
-.icon-checkmark2:before {
-  content: "\ea11";
+#myTable .none {
+  display: none;
 }
