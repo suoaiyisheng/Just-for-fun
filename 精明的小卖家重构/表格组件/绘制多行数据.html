@@ -16,8 +16,8 @@
     <table id="myTable">
       <thead>
         <tr>
-          <th>产品</th>
-          <th>地区</th>
+          <th>{{winName}}</th>
+          <th>{{loserName}}</th>
           <th>1月</th>
           <th>2月</th>
           <th>3月</th>
@@ -33,9 +33,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="dataItem in data">
-          <td>{{dataItem.product}}</td>
-          <td>{{dataItem.region}}</td>
+        <tr v-for="(dataItem,index) in data">
+          <template v-if="selectProductNum == selectRegionNum">
+            <td>{{dataItem.product}}</td>
+            <td>{{dataItem.region}}</td>
+          </template>
+          <template v-else-if="selectProductNum > selectRegionNum">
+            <td v-if="index==0" :rowspan="selectProductNum">{{dataItem.product}}</td>
+            <td>{{dataItem.region}}</td>
+          </template>
+          <template v-else-if="selectRegionNum > selectProductNum">
+            <td v-if="index==0" :rowspan="selectRegionNum">{{dataItem.region}}</td>
+            <td>{{dataItem.product}}</td>
+          </template>
           <td v-for="(item,index) in dataItem.saleTd">
             <span v-show="item.tdTab === 'editting'">
               <input v-model="dataItem.saleTd[index].saleNum" @keyup.enter="setEdited(item)">
@@ -72,6 +82,10 @@
               sale: [220, 200, 240, 250, 260, 270, 280, 295, 310, 335, 355, 380]
             }
           ],
+          selectProductNum: 1,
+          selectRegionNum: 3,
+          winName: '地区',
+          loserName: '产品',
           data: []
         }
       },
@@ -100,7 +114,6 @@
           })
           this.data.push(obj)
         });
-        console.log(this.data)
       },
     })
   </script>

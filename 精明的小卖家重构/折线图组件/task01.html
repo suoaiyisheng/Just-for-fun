@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <title>LineChart</title>
+</head>
+
+<body>
+  <div id="lineChartWrapper" style="width:600px;height:250px;"></div>
+  <script>
+    new Vue({
+      data() {
+        return {
+          sourceData: [{
+              product: "手机",
+              region: "华东",
+              sale: [120, 100, 140, 160, 180, 185, 190, 210, 230, 245, 255, 270]
+            },
+            {
+              product: "手机",
+              region: "华北",
+              sale: [80, 70, 90, 110, 130, 145, 150, 160, 170, 185, 190, 200]
+            },
+            {
+              product: "手机",
+              region: "华南",
+              sale: [220, 200, 240, 250, 260, 270, 280, 295, 310, 335, 355, 380]
+            }
+          ],
+          chartData: {
+            layout: {
+              xaxis: {
+                title: '月份',
+                tickmode: 'linear'
+              },
+              yaxis: {
+                title: '销量'
+              }
+            },
+            saleData: []
+          }
+        }
+      },
+      methods: {
+        trace: function (yArr, name) {
+          this.y = yArr;
+          this.x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+          this.mode = 'lines+markers';
+          this.name = name;
+        },
+        plantChartData: function (arr) {
+          arr.forEach(element => {
+            var name = element.region + element.product + '销量';
+            this.chartData.saleData.push(new this.trace(element.sale, name))
+          });
+        },
+        createLineChart: function (chartId, chartData, layout) {
+          Plotly.newPlot(chartId, chartData, layout);
+        }
+      },
+      created() {
+        this.plantChartData(this.sourceData);
+        this.createLineChart('lineChartWrapper', this.chartData.saleData, this.chartData.layout)
+      },
+    })
+  </script>
+</body>
+
+</html>

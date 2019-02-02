@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <title>LineChart</title>
+</head>
+
+<body>
+  <div id="barChartWrapper" style="width:600px;height:250px;"></div>
+  <script>
+    new Vue({
+      data() {
+        return {
+          sourceData: [{
+              product: "手机",
+              region: "华东",
+              sale: [120, 100, 140, 160, 180, 185, 190, 210, 230, 245, 255, 270]
+            },
+            {
+              product: "手机",
+              region: "华北",
+              sale: [80, 70, 90, 110, 130, 145, 150, 160, 170, 185, 190, 200]
+            },
+            {
+              product: "手机",
+              region: "华南",
+              sale: [220, 200, 240, 250, 260, 270, 280, 295, 310, 335, 355, 380]
+            }
+          ],
+          chartData: {
+            layout: {
+              yaxis: {
+                title: '销量'
+              }
+            },
+            saleData: []
+          },
+          selectProductNum: 1,
+          selectRegionNum: 3
+        }
+      },
+      methods: {
+        trace: function (yArr, name) {
+          this.x = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+          this.y = yArr;
+          this.name = name;
+          this.type = 'bar'
+        },
+        createBarChart: function (chartId, chartData, layout) {
+          Plotly.newPlot(chartId, chartData, layout);
+        },
+        plantChartData: function (arr) {
+          //只有一组数据
+          if (this.selectProductNum == 1 && this.selectRegionNum == 1) {
+            this.sourceData.forEach(element => {
+              this.chartData.saleData.push(new this.trace(element.sale, ''))
+            });
+          } else if (this.selectProductNum == 1 && this.selectRegionNum == 3) {
+            this.chartData.layout.barmode = 'group';
+            this.sourceData.forEach(element => {
+              this.chartData.saleData.push(new this.trace(element.sale, element.region))
+            })
+          } else if (this.selectProductNum == 3 && this.selectRegionNum == 1) {
+            this.chartData.layout.barmode = 'group';
+            this.sourceData.forEach(element => {
+              this.chartData.saleData.push(new this.trace(element.sale, element.product))
+            })
+          }
+          //3V1
+        },
+      },
+      created() {
+        this.plantChartData(this.sourceData);
+        this.createBarChart('barChartWrapper', this.chartData.saleData, this.chartData.layout)
+      },
+    })
+  </script>
+</body>
+
+</html>
