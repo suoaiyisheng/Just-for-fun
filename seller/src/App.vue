@@ -158,7 +158,7 @@ export default {
           selectRegion.push(element);
       });
       if(localStorage.getItem('sourceData')){
-        sourceData = localStorage.getItem('YourItem');
+        sourceData = JSON.parse(localStorage.getItem('sourceData'));
       }else{
         sourceData = this.sourceData;
       }

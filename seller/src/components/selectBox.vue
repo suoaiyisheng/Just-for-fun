@@ -52,7 +52,7 @@
             this.toggle = "no";
             }
         }
-        this.$emit('selectChange', JSON.stringify(this.checkedItems));
+        this.$emit('selectChange', this.checkedItems);
         }
     },
 

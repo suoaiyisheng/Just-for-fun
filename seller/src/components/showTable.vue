@@ -78,7 +78,7 @@ export default {
         setEdited: function (saleTdObj) {
             saleTdObj.tdTab = "edited";
             this.renderStoreData();
-            localStorage.setItem('sourceData', this.storeData)
+            localStorage.setItem('sourceData', JSON.stringify(this.storeData));
         },
         setEditting: function (saleTdObj) {
             saleTdObj.tdTab = "editting";
