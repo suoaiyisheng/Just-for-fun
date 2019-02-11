@@ -7,8 +7,8 @@
     >>[我的完成](https://suoaiyisheng.github.io/Just-for-fun/%E7%B2%BE%E6%98%8E%E7%9A%84%E5%B0%8F%E5%8D%96%E5%AE%B6/layout.HTML)
   可视化部分有点作弊使用了d3.js框架
  *  >项目② 我是精明的小卖家（三）
-    >> [需求描述] http://ife.baidu.com/course/detail/id/56<br>
-    >> [我的完成]https://suoaiyisheng.github.io/Just-for-fun//seller/dist/index.html<br>
+    >> [需求描述] （http://ife.baidu.com/course/detail/id/56)<br>
+    >> [我的完成](https://suoaiyisheng.github.io/Just-for-fun//seller/dist/index.html)<br>
     >> [使用的框架] 使用vue-cli，并且运用了localStorage的知识
 * > 项目③给爱的人发个邮件吧
   >>[需求描述](http://ife.baidu.com/course/detail/id/52)<br>
