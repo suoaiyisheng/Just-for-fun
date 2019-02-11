@@ -9,7 +9,7 @@
  *  >项目② 我是精明的小卖家（三）
     >> [需求描述](http://ife.baidu.com/course/detail/id/56)<br>
     >> [我的完成](https://suoaiyisheng.github.io/Just-for-fun//seller/dist/index.html)<br>
-    >> [使用的框架] 使用vue-cli，并且运用了localStorage的知识
+    >> 使用的框架: 使用vue-cli，并且运用了localStorage的知识
 * > 项目③给爱的人发个邮件吧
   >>[需求描述](http://ife.baidu.com/course/detail/id/52)<br>
   >>[我的完成](https://suoaiyisheng.github.io/Just-for-fun/task28-30/task.html)
