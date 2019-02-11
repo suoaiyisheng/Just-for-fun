@@ -1,5 +1,5 @@
 <template>
-    <table id="myTable">
+    <table id="myTable" v-show="selectProductNum>0&&selectRegionNum>0">
         <thead>
         <tr>
             <th>{{firstTrName}}</th>
