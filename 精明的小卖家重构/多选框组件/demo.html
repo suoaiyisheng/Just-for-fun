@@ -1,37 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
-    <title>全选&反选</title>
-  </head>
 
-  <body>
-    <div id="example">
-      <input
-        type="checkbox"
-        id="selectAll"
-        value="全选"
-        v-model="toggle"
-        true-value="yes"
-        false-value="no"
-        @click="selectAll"
-      />
-      <label for="selectAll">全选</label>
-      <template v-for="checkbox in checkBoxData">
-        <input
-          type="checkbox"
-          v-bind:id="checkbox.id"
-          v-bind:value="checkbox.value"
-          v-model="checkedItems"
-        />
-        <label for="checkbox.id">{{ checkbox.value }}</label>
-      </template>
-    </div>
-    <script>
-      new Vue({
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+  <title>全选&反选</title>
+</head>
+
+<body>
+  <div id="example">
+    <input type="checkbox" id="selectAll" value="全选" v-model="toggle" true-value="yes" false-value="no" @click="selectAll" />
+    <label for="selectAll">全选</label>
+    <template v-for="checkbox in checkBoxData">
+      <input type="checkbox" v-bind:id="checkbox.id" v-bind:value="checkbox.value" v-model="checkedItems" />
+      <label for="checkbox.id">{{ checkbox.value }}</label>
+    </template>
+  </div>
+  <script>
+    new Vue({
         el: "#example",
         data() {
           return {
@@ -86,5 +74,84 @@
         }
       });
     </script>
-  </body>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+  <title>全选&反选</title>
+</head>
+
+<body>
+  <div id="example">
+    <input type="checkbox" id="selectAll" value="全选" v-model="toggle" true-value="yes" false-value="no" @click="selectAll" />
+    <label for="selectAll">全选</label>
+    <template v-for="checkbox in checkBoxData">
+      <input type="checkbox" v-bind:id="checkbox.id" v-bind:value="checkbox.value" v-model="checkedItems" />
+      <label for="checkbox.id">{{ checkbox.value }}</label>
+    </template>
+  </div>
+  <script>
+    new Vue({
+      el: "#example",
+      data() {
+        return {
+          toggle: "no",
+          checkedItems: [],
+          checkBoxData: [{
+              id: "east",
+              value: "华东"
+            },
+            {
+              id: "north",
+              value: "华北"
+            },
+            {
+              id: "south",
+              value: "华南"
+            }
+          ]
+        };
+      },
+      created() {
+        this.checkBoxNum = this.checkBoxData.length;
+      },
+      watch: {
+        checkedItems: function () {
+          if (this.checkedItems.length == this.checkBoxNum) {
+            if (this.toggle == "no") {
+              this.toggle = "yes";
+            }
+          } else {
+            if (this.toggle == "yes") {
+              this.toggle = "no";
+            }
+          }
+        }
+      },
+      methods: {
+        selectAll: function () {
+          if (this.toggle == "yes") {
+            this.toggle = "no";
+            this.checkedItems = [];
+          } else {
+            this.toggle = "yes";
+            this.checkBoxData.forEach(checkBox => {
+              if (this.checkedItems.indexOf(checkBox) == -1) {
+                this.checkedItems.push(checkBox.value);
+              }
+            });
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>监听一个数组的变化</title>
+</head>
+
+<body>
+  <script>
+    let app1 = new Observer({
+      name: 'youngwind',
+      age: 25
+    });
+
+    //①为什么用let代替var 有什么好处？
+    //①块作用域 ②变量提升
+    function Observer(object) {
+      this.data = {};
+      for (const key in object) {
+        if (object.hasOwnProperty(key)) {
+          const element = object[key];
+          let initValue = null;
+          let init = null;
+          if (typeof element != "object") {
+            Object.defineProperty(this.data, key, {
+              enumerable: true,
+              configurable: true,
+              get: function () {
+                console.log("你访问了" + key);
+                return initValue
+              },
+              set: function (newValue) {
+                initValue = newValue;
+                if (init) {
+                  console.log("你设置了" + key + "新的值为" + newValue)
+                } else {
+                  init = "初始化完毕";
+                }
+              }
+            })
+            this.data[key] = element;
+          } else {
+            this.data[key] = new Observer(element);
+          }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
